@@ -1,0 +1,26 @@
+CM 75ohm super j-antenna for ADSB
+CE
+SY H=0.5	'Height above ground
+SY fp=0.0135, fpl=H+fp	'Feed point level
+SY sll=0.068, lll=sll*3
+SY slp=H+sll, llp=H+lll
+SY msw=8e-3, sw=msw	'sw - stub width, msw - matching stub width sw=sll/2, msw=8e-3
+SY radius=1.5e-3
+GW	1	5	0	0	slp	0	0	llp	radius
+GW	2	5	0	0	fpl	0	0	slp	radius
+GW	3	3	0	0	H	0	0	fpl	radius
+GW	4	3	0	0	H	0	msw	H	radius
+GW	5	3	0	msw	H	0	msw	fpl	radius
+GW	6	5	0	msw	fpl	0	msw	slp	radius
+GW	7	3	0	0	fpl	0	msw	fpl	radius
+GW	8	3	0	0	llp	sll	0	llp	radius
+GW	9	1	sll	0	llp	sll	0	llp+sw	radius
+GW	10	3	sll	0	llp+sw	0	0	llp+sw	radius
+GW	11	5	0	0	llp+sw	0	0	llp+lll+sw-sll	radius
+GE	1
+LD	5	0	0	0	58000000
+GN	2	0	0	0	3	0.0001
+EK
+EX	0	7	2	0	1.0	0	0
+FR	0	0	0	0	1090	0
+EN
