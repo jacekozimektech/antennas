@@ -1,0 +1,46 @@
+CM 75ohm super j-antenna for ADSB
+CE
+SY H=10	'Height above ground
+SY fp=0.012, fpl=H+fp	'Feed point level
+SY sll=0.0705, lll=sll*3
+SY slp=H+sll, llp=H+lll
+SY msw=8e-3, sw=msw	'sw - stub width, msw - matching stub width sw=sll/2, msw=8e-3
+SY radius=1.5e-3
+SY rcurve=sll/(3*Pi/2 + 1)
+GW	1	10	0	0	slp	0	0	llp	radius
+GW	2	10	0	0	fpl	0	0	slp	radius
+GW	3	5	0	0	H	0	0	fpl	radius
+GW	4	5	0	0	H	0	msw	H	radius
+GW	5	5	0	msw	H	0	msw	fpl	radius
+GW	6	5	0	msw	fpl	0	msw	slp	radius
+GW	7	5	0	0	fpl	0	msw	fpl	radius
+GW	8	5	0	0	llp	rcurve	0	llp	radius
+GW	9	3	rcurve * cos(0)	rcurve * sin(0)	llp	rcurve * cos(30)	rcurve * sin(30)	llp	radius
+GW	10	3	rcurve * cos(30)	rcurve * sin(30)	llp	rcurve * cos(60)	rcurve * sin(60)	llp	radius
+GW	11	3	rcurve * cos(60)	rcurve * sin(60)	llp	rcurve * cos(90)	rcurve * sin(90)	llp	radius
+GW	12	3	rcurve * cos(90)	rcurve * sin(90)	llp	rcurve * cos(120)	rcurve * sin(120)	llp	radius
+GW	13	3	rcurve * cos(120)	rcurve * sin(120)	llp	rcurve * cos(150)	rcurve * sin(150)	llp	radius
+GW	14	3	rcurve * cos(150)	rcurve * sin(150)	llp	rcurve * cos(180)	rcurve * sin(180)	llp	radius
+GW	15	3	rcurve * cos(180)	rcurve * sin(180)	llp	rcurve * cos(210)	rcurve * sin(210)	llp	radius
+GW	16	3	rcurve * cos(210)	rcurve * sin(210)	llp	rcurve * cos(240)	rcurve * sin(240)	llp	radius
+GW	17	3	rcurve * cos(240)	rcurve * sin(240)	llp	rcurve * cos(270)	rcurve * sin(270)	llp	radius
+GW	18	3	0	-rcurve	llp	0	-rcurve	llp+sw	radius
+GW	19	3	rcurve * cos(0)	rcurve * sin(0)	llp+sw	rcurve * cos(30)	rcurve * sin(30)	llp+sw	radius
+GW	20	3	rcurve * cos(30)	rcurve * sin(30)	llp+sw	rcurve * cos(60)	rcurve * sin(60)	llp+sw	radius
+GW	21	3	rcurve * cos(60)	rcurve * sin(60)	llp+sw	rcurve * cos(90)	rcurve * sin(90)	llp+sw	radius
+GW	22	3	rcurve * cos(90)	rcurve * sin(90)	llp+sw	rcurve * cos(120)	rcurve * sin(120)	llp+sw	radius
+GW	23	3	rcurve * cos(120)	rcurve * sin(120)	llp+sw	rcurve * cos(150)	rcurve * sin(150)	llp+sw	radius
+GW	24	3	rcurve * cos(150)	rcurve * sin(150)	llp+sw	rcurve * cos(180)	rcurve * sin(180)	llp+sw	radius
+GW	25	3	rcurve * cos(180)	rcurve * sin(180)	llp+sw	rcurve * cos(210)	rcurve * sin(210)	llp+sw	radius
+GW	26	3	rcurve * cos(210)	rcurve * sin(210)	llp+sw	rcurve * cos(240)	rcurve * sin(240)	llp+sw	radius
+GW	27	3	rcurve * cos(240)	rcurve * sin(240)	llp+sw	rcurve * cos(270)	rcurve * sin(270)	llp+sw	radius
+GW	28	5	0	0	llp+sw	rcurve	0	llp+sw	radius
+GW	29	10	0	0	llp+sw	0	0	llp+lll+sw-sll	radius
+GE	1
+LD	5	0	0	0	58000000
+GN	2	0	0	0	3	0.0001
+GD	2	0	0	0	4	0.003	20	0
+EK
+EX	0	7	2	0	1.0	0	0
+FR	0	50	0	0	1040	2
+EN
